@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kavach — Real-Time Scam Interception for Indian Families</title>
+<!-- Google Fonts: Inter & Newsreader / Fraunces styling -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config verbatim matching Design System -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#b7140f",
+            "on-tertiary-fixed": "#191c21",
+            "secondary-fixed": "#95f6ca",
+            "on-error": "#ffffff",
+            "surface-container-high": "#eae8e4",
+            "on-secondary": "#ffffff",
+            "surface-dim": "#dbdad6",
+            "primary-fixed-dim": "#ffb4a9",
+            "outline-variant": "#e5beb8",
+            "surface-variant": "#e4e2de",
+            "tertiary-fixed-dim": "#c4c6cd",
+            "on-primary": "#ffffff",
+            "on-primary-fixed": "#410000",
+            "background": "#FAF8F4",
+            "on-secondary-container": "#007351",
+            "tertiary": "#595c62",
+            "secondary": "#006c4c",
+            "inverse-primary": "#ffb4a9",
+            "tertiary-container": "#72747b",
+            "on-tertiary-container": "#fefcff",
+            "on-tertiary-fixed-variant": "#44474d",
+            "tertiary-fixed": "#e1e2e9",
+            "primary-container": "#E5392B",
+            "outline": "#906f6a",
+            "secondary-container": "#95f6ca",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#fffbff",
+            "surface-tint": "#bb1811",
+            "primary-fixed": "#ffdad5",
+            "surface": "#FAF8F4",
+            "surface-bright": "#FAF8F4",
+            "on-secondary-fixed-variant": "#005138",
+            "surface-container-low": "#f5f3ef",
+            "on-secondary-fixed": "#002114",
+            "surface-container-highest": "#e4e2de",
+            "surface-container-lowest": "#ffffff",
+            "inverse-surface": "#0E1116",
+            "on-primary-fixed-variant": "#930003",
+            "on-background": "#0E1116",
+            "on-tertiary": "#ffffff",
+            "surface-container": "#efeeea",
+            "on-surface-variant": "#5c403c",
+            "secondary-fixed-dim": "#79d9ae",
+            "on-surface": "#0E1116",
+            "on-error-container": "#93000a",
+            "error": "#ba1a1a",
+            "inverse-on-surface": "#f2f0ed"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1.5rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "margin-mobile": "1.25rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2.5rem",
+            "space-xs": "0.25rem",
+            "gutter": "1.5rem",
+            "space-lg": "1.5rem",
+            "margin": "3rem",
+            "gutter-mobile": "1rem"
+          },
+          "fontFamily": {
+            "display-lg": ["Newsreader", "serif"],
+            "headline-lg": ["Newsreader", "serif"],
+            "label-md": ["Inter", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "display-md-mobile": ["Newsreader", "serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "display-md": ["Newsreader", "serif"],
+            "body-xl": ["Inter", "sans-serif"],
+            "headline-md": ["Newsreader", "serif"],
+            "display-lg-mobile": ["Newsreader", "serif"],
+            "label-sm": ["Inter", "sans-serif"],
+            "headline-sm": ["Inter", "sans-serif"]
+          },
+          "fontSize": {
+            "display-lg": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display-md-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display-md": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+            "body-xl": ["20px", { "lineHeight": "32px", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "headline-md": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Material icon helper */
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    /* Waveform pulsing micro-animation */
+    @keyframes wavePulse {
+      0%, 100% { height: 6px; }
+      50% { height: 26px; }
+    }
+    .wave-bar {
+      animation: wavePulse 1.2s ease-in-out infinite;
+    }
+    .wave-bar:nth-child(2) { animation-delay: 0.15s; }
+    .wave-bar:nth-child(3) { animation-delay: 0.3s; }
+    .wave-bar:nth-child(4) { animation-delay: 0.45s; }
+    .wave-bar:nth-child(5) { animation-delay: 0.2s; }
+    .wave-bar:nth-child(6) { animation-delay: 0.35s; }
+    .wave-bar:nth-child(7) { animation-delay: 0.5s; }
+    .wave-bar:nth-child(8) { animation-delay: 0.1s; }
+
+    /* Custom hairline border token */
+    .border-hairline {
+      border-color: #E7E2D9;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased selection:bg-primary-container selection:text-white">
+<!-- ========================================================================= -->
+<!-- 1. NAVIGATION (Docked sticky header, translucent blur, 72px) -->
+<!-- ========================================================================= -->
+<header class="bg-surface/85 backdrop-blur-md dark:bg-inverse-surface/85 docked full-width top-0 sticky z-50 h-[72px] border-b border-surface-container dark:border-outline/20 shadow-[0_1px_3px_rgba(14,17,22,0.02),0_4px_12px_rgba(14,17,22,0.03)]">
+<div class="flex justify-between items-center w-full px-6 md:px-12 max-w-[1200px] mx-auto h-full">
+<!-- Left: Geometric Shield + Wordmark -->
+<a class="flex items-center gap-3 active:scale-[0.98] transition-transform duration-150" href="#">
+<div class="w-8 h-8 rounded-lg bg-inverse-surface text-surface flex items-center justify-center shadow-sm">
+<svg class="w-4 h-4 fill-current text-[#FAF8F4]" viewbox="0 0 24 24">
+<path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm0 2.18l6 2.25v4.66c0 4.14-2.73 8.02-6 9.07-3.27-1.05-6-4.93-6-9.07V6.43l6-2.25z"></path>
+</svg>
+</div>
+<span class="text-headline-md font-headline-md font-medium text-on-surface dark:text-inverse-on-surface tracking-tight">Kavach</span>
+</a>
+<!-- Center: Exactly 4 Navigation Links -->
+<nav class="hidden md:flex items-center gap-8 text-label-md font-label-md">
+<a class="text-on-surface dark:text-inverse-on-surface font-medium border-b-2 border-primary py-1" href="#how-it-works">How it works</a>
+<a class="text-tertiary dark:text-tertiary-fixed-dim hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors py-1" href="#scam-types">Scam types</a>
+<a class="text-tertiary dark:text-tertiary-fixed-dim hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors py-1" href="#for-families">For families</a>
+<a class="text-tertiary dark:text-tertiary-fixed-dim hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors py-1" href="#pricing">Pricing</a>
+</nav>
+<!-- Right: Language Switch & Vermilion CTA -->
+<div class="flex items-center gap-5">
+<span class="text-label-sm font-label-sm tracking-wider text-tertiary hidden sm:inline-block">
+          EN | हिन्दी | ગુજરાતી
+        </span>
+<a class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md hover:bg-primary transition-colors active:scale-[0.98] duration-150 shadow-sm" href="#live-demo">
+          Try the live demo
+        </a>
+</div>
+</div>
+</header>
+<!-- ========================================================================= -->
+<!-- 2. HERO SECTION (Split composition, min-h-[92vh], flex items-center) -->
+<!-- ========================================================================= -->
+<section class="min-h-[92vh] flex items-center pt-8 pb-20 md:py-24 border-b border-hairline overflow-hidden relative">
+<div class="w-full max-w-[1200px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+<!-- Left Column: Copy & CTAs -->
+<div class="lg:col-span-7 flex flex-col items-start">
+<!-- Trust Pill Badge -->
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF8F4] border border-[#E7E2D9] text-label-md font-label-md text-tertiary mb-8 shadow-[0_1px_2px_rgba(14,17,22,0.03)]">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Real-time protection for your parents</span>
+</div>
+<!-- Giant Serif Headline -->
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-6 leading-tight tracking-tight">
+          Hang up on the scam. <br/>
+<em class="italic font-normal text-on-surface-variant font-display-lg">Before it costs a lifetime.</em>
+</h1>
+<!-- Subhead -->
+<p class="font-body-xl text-body-xl text-on-surface/80 max-w-xl mb-6 font-normal">
+          Kavach listens to suspicious calls as they happen, tells your parent exactly why it’s a scam, in Gujarati or Hindi, while the scammer is still talking.
+        </p>
+<!-- Lighter Regional Copy -->
+<div class="p-3.5 rounded-xl bg-surface-container-low border border-hairline/60 text-[#595c62] mb-9 font-normal text-body-md tracking-wide">
+          પોલીસ કે સીબીઆઇ ક્યારેય ફોન પર ધરપકડ કરતી નથી • पुलिस कभी फोन पर गिरफ़्तारी नहीं करती
+        </div>
+<!-- CTAs -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-8">
+<a class="h-14 px-8 rounded-full bg-primary-container hover:bg-primary text-white font-label-md text-[15px] flex items-center justify-center gap-3 transition-colors active:scale-[0.98] shadow-md shadow-primary-container/20" href="#live-demo">
+<span class="material-symbols-outlined text-xl">play_circle</span>
+<span>Try the live demo</span>
+</a>
+<a class="h-14 px-6 rounded-full bg-transparent text-on-surface hover:text-primary transition-colors flex items-center justify-center gap-2 font-label-md text-[15px]" href="#how-it-works">
+<span>Watch how it works</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</a>
+</div>
+<!-- Footnote anchor -->
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-tertiary uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span>
+<span>Built for India. Gujarati · Hindi · English.</span>
+</div>
+</div>
+<!-- Right Column: Layered Product Composition -->
+<div class="lg:col-span-5 relative flex justify-center items-center py-6">
+<!-- Floating Backdrop Card: Live Transcript Underlined in Red -->
+<div class="absolute -top-4 -right-2 md:-right-6 w-80 bg-white border border-hairline rounded-2xl p-4 shadow-[0_12px_32px_-4px_rgba(14,17,22,0.08)] z-0 hidden sm:block transform rotate-2">
+<div class="flex items-center justify-between pb-3 border-b border-hairline">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-tertiary">Live Audio Parser</span>
+<span class="text-label-sm font-label-sm text-primary font-semibold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+              92/100 Threat Index
+            </span>
+</div>
+<div class="pt-3 text-[13px] leading-relaxed text-[#2C2E33] space-y-1.5">
+<p>“...your <span class="border-b-2 border-primary font-medium text-primary">Aadhaar linked to 14 illegal accounts</span> in Mumbai branch...”</p>
+<p>“...DCP Bansal issued a <span class="border-b-2 border-primary font-medium text-primary">non-bailable warrant</span> under Section 420...”</p>
+</div>
+</div>
+<!-- Phone Device Frame (#0E1116) -->
+<div class="w-full max-w-[340px] bg-inverse-surface rounded-[40px] p-4 border-[6px] border-[#2C2D30] shadow-[0_24px_50px_rgba(14,17,22,0.25)] relative z-10 flex flex-col justify-between overflow-hidden min-h-[580px]">
+<!-- Top Phone Bar -->
+<div class="w-full flex items-center justify-between px-3 pt-2 text-surface/60 text-xs font-mono">
+<span>11:42 AM</span>
+<div class="w-16 h-4 bg-black rounded-full mx-auto"></div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-sm">battery_full</span>
+</div>
+</div>
+<!-- Active Call Info -->
+<div class="text-center mt-6">
+<div class="w-16 h-16 rounded-full bg-white/10 text-white/80 mx-auto flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-3xl">person</span>
+</div>
+<h2 class="text-surface font-headline-sm text-lg font-medium tracking-tight">Unknown caller</h2>
+<p class="text-surface/60 text-xs font-mono mt-0.5">+91 98210 44102</p>
+<p class="text-surface/40 text-xs mt-1">Ongoing call • 01:24</p>
+<!-- Live Pulsing Waveform -->
+<div class="flex items-center justify-center gap-1.5 h-8 mt-5">
+<span class="w-1 bg-primary wave-bar rounded-full"></span>
+<span class="w-1 bg-primary wave-bar rounded-full"></span>
+<span class="w-1 bg-primary wave-bar rounded-full"></span>
+<span class="w-1 bg-primary wave-bar rounded-full"></span>
+<span class="w-1 bg-primary wave-bar rounded-full"></span>
+<span class="w-1 bg-primary wave-bar rounded-full"></span>
+<span class="w-1 bg-primary wave-bar rounded-full"></span>
+<span class="w-1 bg-primary wave-bar rounded-full"></span>
+</div>
+</div>
+<!-- Bottom Warning Sheet (Sliding up from bottom, Vermilion theme) -->
+<div class="bg-primary-container text-white rounded-3xl p-5 shadow-2xl mt-4 border border-white/20">
+<div class="flex items-center justify-between mb-2">
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold tracking-wider uppercase bg-black/20 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-sm">warning</span>
+                Immediate Threat
+              </span>
+<span class="text-xs font-mono bg-white text-primary font-bold px-2 py-0.5 rounded">94/100</span>
+</div>
+<h3 class="font-display-md text-xl font-bold leading-tight mt-1 text-white">
+              Stop. This is a scam.
+            </h3>
+<p class="text-sm font-medium text-white/95 mt-1 leading-snug">
+              पुलिस कभी वीडियो कॉल पर गिरफ्तार नहीं करती
+            </p>
+<!-- Threat Category Chips -->
+<div class="grid grid-cols-2 gap-1.5 mt-3 pt-3 border-t border-white/15">
+<span class="text-[11px] bg-black/20 px-2 py-1 rounded text-center font-medium">🚨 Fake police</span>
+<span class="text-[11px] bg-black/20 px-2 py-1 rounded text-center font-medium">⏱️ Urgency coercion</span>
+<span class="text-[11px] bg-black/20 px-2 py-1 rounded text-center font-medium">⚠️ Threat</span>
+<span class="text-[11px] bg-black/20 px-2 py-1 rounded text-center font-medium">💸 Money request</span>
+</div>
+<!-- Intercept Action Button -->
+<button class="w-full mt-4 py-2.5 rounded-xl bg-white text-primary font-semibold text-xs tracking-wide uppercase transition hover:bg-surface active:scale-[0.98]">
+              End Call &amp; Alert Child
+            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 3. PROBLEM SECTION (Dramatic typographic section) -->
+<!-- ========================================================================= -->
+<section class="py-28 md:py-36 border-b border-hairline">
+<div class="max-w-[1200px] mx-auto px-6 md:px-12 text-center">
+<p class="text-label-sm font-label-sm uppercase tracking-widest text-primary font-semibold mb-4">
+        National Crisis Assessment
+      </p>
+<!-- Centered serif statement -->
+<h2 class="font-display-lg text-display-md md:text-display-lg max-w-4xl mx-auto leading-tight text-on-surface mb-20 font-normal">
+        Every day, someone’s parents are told they’re under <em class="italic text-primary font-normal font-display-lg">digital arrest</em>.
+      </h2>
+<!-- 3 Oversized Stat Numerals with Hairline Dividers -->
+<div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-hairline border-y border-hairline py-12">
+<!-- Col 1 -->
+<div class="flex flex-col items-center px-6 py-6 md:py-0">
+<span class="font-display-lg text-display-lg font-light text-on-surface mb-3 tracking-tight">₹1,750+ Cr</span>
+<p class="text-body-md text-tertiary max-w-[240px] text-center leading-relaxed">
+            Lost to cyber fraud across India (I4C / NCRB 2024 report)
+          </p>
+</div>
+<!-- Col 2 -->
+<div class="flex flex-col items-center px-6 py-6 md:py-0">
+<span class="font-display-lg text-display-lg font-light text-on-surface mb-3 tracking-tight">74%</span>
+<p class="text-body-md text-tertiary max-w-[240px] text-center leading-relaxed">
+            Of major digital arrest victims are seniors over 50 years old
+          </p>
+</div>
+<!-- Col 3 -->
+<div class="flex flex-col items-center px-6 py-6 md:py-0">
+<span class="font-display-lg text-display-lg font-light text-on-surface mb-3 tracking-tight">1 Victim</span>
+<p class="text-body-md text-tertiary max-w-[260px] text-center leading-relaxed">
+            The scam succeeds because parents are isolated and alone on the call
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 4. HOW IT WORKS (Sticky scroll storytelling / 3 clear numbered stages) -->
+<!-- ========================================================================= -->
+<section class="py-28 md:py-36 border-b border-hairline bg-[#FAF8F4]" id="how-it-works">
+<div class="max-w-[1200px] mx-auto px-6 md:px-12">
+<!-- Section Header -->
+<div class="max-w-2xl mb-20">
+<span class="text-label-sm font-label-sm uppercase tracking-widest text-tertiary font-semibold block mb-3">Architectural Workflow</span>
+<h2 class="font-display-lg text-display-md md:text-display-lg text-on-surface leading-tight font-normal">
+          How Kavach protects in real time.
+        </h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Left: 3 Clear Numbered Rows (01 / 02 / 03) -->
+<div class="lg:col-span-7 flex flex-col space-y-12">
+<!-- Stage 01 -->
+<div class="flex gap-6 items-start p-8 rounded-2xl bg-white border border-hairline shadow-[0_1px_3px_rgba(14,17,22,0.02),0_4px_12px_rgba(14,17,22,0.03)] hover:border-[#D5CEC3] transition-all">
+<span class="font-display-lg text-headline-lg text-primary font-medium">01</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">It listens</h3>
+<p class="text-body-lg text-[#595c62] leading-relaxed">
+                Audio is analyzed directly on the incoming call stream, generating live waveforms and streaming speech transcript in real time without human ears.
+              </p>
+</div>
+</div>
+<!-- Stage 02 -->
+<div class="flex gap-6 items-start p-8 rounded-2xl bg-white border border-hairline shadow-[0_1px_3px_rgba(14,17,22,0.02),0_4px_12px_rgba(14,17,22,0.03)] hover:border-[#D5CEC3] transition-all">
+<span class="font-display-lg text-headline-lg text-primary font-medium">02</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">It spots the red flags</h3>
+<p class="text-body-lg text-[#595c62] leading-relaxed">
+                Our semantic threat engine pinpoints coercion formulas: synthetic police authority, urgent demands for RTGS transfers, and intimidation to keep doors closed.
+              </p>
+</div>
+</div>
+<!-- Stage 03 -->
+<div class="flex gap-6 items-start p-8 rounded-2xl bg-white border border-hairline shadow-[0_1px_3px_rgba(14,17,22,0.02),0_4px_12px_rgba(14,17,22,0.03)] hover:border-[#D5CEC3] transition-all">
+<span class="font-display-lg text-headline-lg text-primary font-medium">03</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">It warns, in their language</h3>
+<p class="text-body-lg text-[#595c62] leading-relaxed">
+                A full-screen vermilion alert sheet speaks audibly in Gujarati or Hindi, delivering calm authoritative counter-counsel with instantaneous “Hang up” and “Call my child” triggers.
+              </p>
+</div>
+</div>
+</div>
+<!-- Right: Interactive Live Simulation Visual Panel -->
+<div class="lg:col-span-5 lg:sticky lg:top-28">
+<div class="bg-white rounded-2xl border border-hairline p-7 shadow-[0_12px_32px_-4px_rgba(14,17,22,0.08)]">
+<div class="flex items-center justify-between pb-4 border-b border-hairline">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+<span class="text-label-sm font-label-sm uppercase font-semibold text-tertiary">Real-Time Engine Stream</span>
+</div>
+<span class="text-label-sm font-label-sm font-mono text-tertiary">LATENCY: 410ms</span>
+</div>
+<!-- Intercept Feed -->
+<div class="my-6 space-y-4">
+<div class="p-3.5 bg-surface-container-low rounded-xl text-xs font-mono text-tertiary leading-relaxed">
+                [PARSING]: "Don't disconnect video or we notify local police chowki..."
+              </div>
+<!-- Threat Decision Box -->
+<div class="p-5 bg-[#FEF5F4] border-2 border-primary-container rounded-2xl">
+<div class="flex items-center gap-2 text-primary font-semibold text-sm mb-2">
+<span class="material-symbols-outlined text-lg">shield_with_heart</span>
+<span>Coercion Signature Identified</span>
+</div>
+<p class="font-display-md text-base text-on-surface font-medium leading-snug">
+                  “CBI never requests funds to clear court warrants.”
+                </p>
+<p class="text-sm text-primary font-medium mt-2">
+                  “સીબીઆઈ ક્યારેય બેંક ખાતું ચકાસવા માટે પૈસા માંગતી નથી.”
+                </p>
+</div>
+</div>
+<!-- Auto Action Trigger -->
+<div class="pt-2 flex items-center justify-between text-xs text-tertiary">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-secondary">verified_user</span>
+                Active Son Notification Ready
+              </span>
+<span class="font-semibold text-on-surface">Auto-Armed</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 5. THE FLAGS (Asymmetric Bento Grid, white cards on ivory) -->
+<!-- ========================================================================= -->
+<section class="py-28 md:py-36 border-b border-hairline" id="scam-types">
+<div class="max-w-[1200px] mx-auto px-6 md:px-12">
+<div class="max-w-2xl mb-16">
+<span class="text-label-sm font-label-sm uppercase tracking-widest text-tertiary font-semibold block mb-3">Extortion Taxonomy</span>
+<h2 class="font-display-lg text-display-md md:text-display-lg text-on-surface leading-tight font-normal">
+          The anatomy of coercion.
+        </h2>
+<p class="font-body-lg text-body-lg text-tertiary mt-3">
+          Trained on tens of thousands of Indian cybercrime patterns and police logs.
+        </p>
+</div>
+<!-- Bento Grid (6 Asymmetric Tiles) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Tile 1 (Dark ink card, large / col-span-2) -->
+<div class="md:col-span-2 bg-inverse-surface text-surface rounded-2xl p-8 border border-hairline shadow-[0_1px_3px_rgba(14,17,22,0.02),0_4px_12px_rgba(14,17,22,0.03)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-6">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-primary-container text-white">
+<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                Primary Threat Vector
+              </span>
+<span class="text-surface/50 text-xs font-mono">CODE: PATTERN-01</span>
+</div>
+<h3 class="font-display-md text-2xl md:text-3xl font-medium text-white mb-3">
+              Digital arrest
+            </h3>
+<p class="text-surface/80 text-base leading-relaxed mb-6">
+              Scammers pose as CBI, Delhi Police, or Telecom Enforcement on video calls, ordering victims to stay confined to their room under legal threat.
+            </p>
+<div class="p-4 rounded-xl bg-white/5 border border-white/10 font-mono text-sm text-[#FFB4A9] leading-relaxed">
+              “Aadhaar linked to narcotics syndicate. Stay on camera.” <br/>
+<span class="text-white/60 text-xs">તમારું આધાર કાર્ડ મુંબઈ પાર્સલમાં મળેલા માદક દ્રવ્યો સાથે જોડાયેલું છે. કેમેરા ચાલુ રાખો.</span>
+</div>
+</div>
+<div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-surface/60">
+<span>Average financial damage: ₹18.4 Lakhs</span>
+<span class="text-white font-medium">Auto-Intercepted</span>
+</div>
+</div>
+<!-- Tile 2: Fake KYC Update -->
+<div class="bg-white rounded-2xl p-8 border border-hairline shadow-[0_1px_3px_rgba(14,17,22,0.02),0_4px_12px_rgba(14,17,22,0.03)] flex flex-col justify-between hover:border-[#D5CEC3] transition-colors">
+<div>
+<span class="inline-block text-[11px] font-semibold uppercase tracking-wider text-primary mb-3">Threat 02</span>
+<h3 class="font-headline-sm text-xl text-on-surface mb-2 font-semibold">Fake KYC Update</h3>
+<p class="text-sm text-tertiary leading-relaxed mb-4">
+              Fraudulent utility cut-off warnings prompting urgent downloads of malicious configuration software.
+            </p>
+<div class="p-3 bg-surface-container-low rounded-lg text-xs italic text-on-surface/90 border border-hairline">
+              “Electricity bill unpaid. Power disconnected tonight unless you download this APK.”
+            </div>
+</div>
+<div class="mt-6 pt-3 border-t border-hairline flex items-center gap-1.5 text-xs text-primary font-medium">
+<span class="material-symbols-outlined text-sm">flag</span>
+<span>Malicious APK detected</span>
+</div>
+</div>
+<!-- Tile 3: Fake Courier / Customs -->
+<div class="bg-white rounded-2xl p-8 border border-hairline shadow-[0_1px_3px_rgba(14,17,22,0.02),0_4px_12px_rgba(14,17,22,0.03)] flex flex-col justify-between hover:border-[#D5CEC3] transition-colors">
+<div>
+<span class="inline-block text-[11px] font-semibold uppercase tracking-wider text-primary mb-3">Threat 03</span>
+<h3 class="font-headline-sm text-xl text-on-surface mb-2 font-semibold">Fake Courier / Customs</h3>
+<p class="text-sm text-tertiary leading-relaxed mb-4">
+              Fabricated international parcel notifications claiming intercepted passports or illicit contraband.
+            </p>
+<div class="p-3 bg-surface-container-low rounded-lg text-xs italic text-on-surface/90 border border-hairline">
+              “FedEx parcel to Taiwan containing contraband seized in Mumbai.”
+            </div>
+</div>
+<div class="mt-6 pt-3 border-t border-hairline flex items-center gap-1.5 text-xs text-primary font-medium">
+<span class="material-symbols-outlined text-sm">flag</span>
+<span>Customs impersonation</span>
+</div>
+</div>
+<!-- Tile 4: OTP & Fast RTGS -->
+<div class="bg-white rounded-2xl p-8 border border-hairline shadow-[0_1px_3px_rgba(14,17,22,0.02),0_4px_12px_rgba(14,17,22,0.03)] flex flex-col justify-between hover:border-[#D5CEC3] transition-colors">
+<div>
+<span class="inline-block text-[11px] font-semibold uppercase tracking-wider text-primary mb-3">Threat 04</span>
+<h3 class="font-headline-sm text-xl text-on-surface mb-2 font-semibold">OTP &amp; Fast RTGS</h3>
+<p class="text-sm text-tertiary leading-relaxed mb-4">
+              Pressure to transfer life savings into so-called "RBI Secure Safekeeping" verification accounts.
+            </p>
+<div class="p-3 bg-surface-container-low rounded-lg text-xs italic text-on-surface/90 border border-hairline">
+              “Move ₹4,50,000 to RBI verification account immediately for audit.”
+            </div>
+</div>
+<div class="mt-6 pt-3 border-t border-hairline flex items-center gap-1.5 text-xs text-primary font-medium">
+<span class="material-symbols-outlined text-sm">flag</span>
+<span>Unregulated transfer flag</span>
+</div>
+</div>
+<!-- Tile 5: Remote-Access Apps -->
+<div class="bg-white rounded-2xl p-8 border border-hairline shadow-[0_1px_3px_rgba(14,17,22,0.02),0_4px_12px_rgba(14,17,22,0.03)] flex flex-col justify-between hover:border-[#D5CEC3] transition-colors">
+<div>
+<span class="inline-block text-[11px] font-semibold uppercase tracking-wider text-primary mb-3">Threat 05</span>
+<h3 class="font-headline-sm text-xl text-on-surface mb-2 font-semibold">Remote-Access Apps</h3>
+<p class="text-sm text-tertiary leading-relaxed mb-4">
+              Guiding elderly parents step-by-step to install desktop mirrors to hijack their bank screens.
+            </p>
+<div class="p-3 bg-surface-container-low rounded-lg text-xs italic text-on-surface/90 border border-hairline">
+              “Install AnyDesk or TeamViewer to verify your bank KYC live.”
+            </div>
+</div>
+<div class="mt-6 pt-3 border-t border-hairline flex items-center gap-1.5 text-xs text-primary font-medium">
+<span class="material-symbols-outlined text-sm">flag</span>
+<span>Device takeover signature</span>
+</div>
+</div>
+<!-- Tile 6: Secrecy Mandate -->
+<div class="bg-white rounded-2xl p-8 border border-hairline shadow-[0_1px_3px_rgba(14,17,22,0.02),0_4px_12px_rgba(14,17,22,0.03)] flex flex-col justify-between hover:border-[#D5CEC3] transition-colors md:col-span-3 lg:col-span-1">
+<div>
+<span class="inline-block text-[11px] font-semibold uppercase tracking-wider text-primary mb-3">Threat 06</span>
+<h3 class="font-headline-sm text-xl text-on-surface mb-2 font-semibold">Secrecy Mandate</h3>
+<p class="text-sm text-tertiary leading-relaxed mb-4">
+              Psychological coercion designed to separate parents from family members or children.
+            </p>
+<div class="p-3 bg-surface-container-low rounded-lg text-xs italic text-on-surface/90 border border-hairline">
+              “Do not disconnect or tell family under the Official Secrets Act.”
+            </div>
+</div>
+<div class="mt-6 pt-3 border-t border-hairline flex items-center gap-1.5 text-xs text-primary font-medium">
+<span class="material-symbols-outlined text-sm">flag</span>
+<span>Isolation psychological trigger</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 6. DOESN'T CRY WOLF (Calm Emerald Counter-Moment) -->
+<!-- ========================================================================= -->
+<section class="py-28 md:py-36 border-b border-hairline bg-[#FAF8F4]">
+<div class="max-w-[1200px] mx-auto px-6 md:px-12">
+<!-- Headline & Subhead -->
+<div class="text-center max-w-3xl mx-auto mb-20">
+<span class="text-label-sm font-label-sm uppercase tracking-widest text-[#12805C] font-semibold block mb-3">Zero False-Alarm Rigor</span>
+<h2 class="font-display-lg text-display-md md:text-display-lg text-on-surface leading-tight font-normal">
+          It knows the difference between a scammer and your son.
+        </h2>
+<p class="font-body-xl text-body-xl text-tertiary mt-4 max-w-2xl mx-auto">
+          Protection that never disrupts genuine family conversations, bank confirmations, or doctor calls.
+        </p>
+</div>
+<!-- Side-by-side comparison -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+<!-- Left Card: Coercive Scam Call (Red) -->
+<div class="bg-white rounded-2xl p-8 border-2 border-primary-container shadow-[0_4px_16px_rgba(229,57,43,0.06)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-4 border-b border-hairline mb-6">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#FEF5F4] text-primary border border-primary/20">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                Threat Detected
+              </span>
+<span class="font-mono text-sm font-bold text-primary">RISK: 94 / 100</span>
+</div>
+<div class="space-y-4">
+<div>
+<p class="text-xs uppercase tracking-wider text-tertiary font-semibold mb-1">Incoming Caller</p>
+<p class="font-medium text-on-surface text-base">+91 98210 44102 (Spoofed Identity)</p>
+</div>
+<div>
+<p class="text-xs uppercase tracking-wider text-tertiary font-semibold mb-1">Extracted Transcript</p>
+<div class="p-3.5 bg-surface-container-low rounded-xl text-sm leading-relaxed text-on-surface">
+                  “I am Inspector Sharma from Crime Branch. We have your <span class="bg-primary/10 text-primary font-semibold px-1 rounded">arrest warrant</span>. You need an <span class="bg-primary/10 text-primary font-semibold px-1 rounded">urgent transfer</span> before 4 PM or van arrives.”
+                </div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-4 border-t border-hairline">
+<div class="flex items-center justify-between text-xs">
+<span class="text-primary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">block</span>
+                Full Audio Shield Triggered
+              </span>
+<span class="text-tertiary">Alert dispatched to son</span>
+</div>
+</div>
+</div>
+<!-- Right Card: Genuine Call (Emerald) -->
+<div class="bg-white rounded-2xl p-8 border-2 border-[#12805C] shadow-[0_4px_16px_rgba(18,128,92,0.06)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-4 border-b border-hairline mb-6">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[rgba(18,128,92,0.08)] text-[#12805C] border border-[#12805C]/20">
+<span class="w-2 h-2 rounded-full bg-[#12805C]"></span>
+                Safe Call Verified
+              </span>
+<span class="font-mono text-sm font-bold text-[#12805C]">RISK: 0 / 100</span>
+</div>
+<div class="space-y-4">
+<div>
+<p class="text-xs uppercase tracking-wider text-tertiary font-semibold mb-1">Known Contact</p>
+<p class="font-medium text-on-surface text-base">Rajesh (Son)</p>
+</div>
+<div>
+<p class="text-xs uppercase tracking-wider text-tertiary font-semibold mb-1">Extracted Transcript</p>
+<div class="p-3.5 bg-surface-container-low rounded-xl text-sm leading-relaxed text-on-surface">
+                  “Papa, did you take your blood pressure medication? Also I ordered the groceries on Blinkit, they will arrive in 10 minutes.”
+                </div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-4 border-t border-hairline">
+<div class="flex items-center justify-between text-xs">
+<span class="text-[#12805C] font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                No Red Flags Detected
+              </span>
+<span class="text-tertiary">Silent monitoring • Zero interruption</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 7. FOR FAMILIES (Full-bleed Dark Ink Section #0E1116) -->
+<!-- ========================================================================= -->
+<section class="py-28 md:py-36 bg-inverse-surface text-white relative overflow-hidden" id="for-families">
+<div class="max-w-[1200px] mx-auto px-6 md:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+<!-- Left: Family Alert Points -->
+<div class="lg:col-span-6">
+<span class="text-label-sm font-label-sm uppercase tracking-widest text-[#ffb4a9] font-semibold block mb-3">Family Network Sync</span>
+<h2 class="font-display-lg text-display-md md:text-display-lg text-white leading-tight font-normal mb-6">
+            You’ll know the moment they’re in danger.
+          </h2>
+<p class="text-surface/80 text-body-xl font-normal mb-10 leading-relaxed">
+            When cybercriminals attempt to isolate your parents, Kavach bridges the gap immediately.
+          </p>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-lg">chat</span>
+</div>
+<div>
+<h3 class="text-white font-headline-sm text-lg font-medium">Instant WhatsApp &amp; SMS ping</h3>
+<p class="text-surface/70 text-sm mt-1 leading-relaxed">
+                  Dispatched to designated adult children within 3 seconds of high threat detection, complete with call context.
+                </p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-lg">phone_in_talk</span>
+</div>
+<div>
+<h3 class="text-white font-headline-sm text-lg font-medium">1-Tap emergency override</h3>
+<p class="text-surface/70 text-sm mt-1 leading-relaxed">
+                  Connect immediately to de-escalate fear, comfort your parent, and force the fraudulent call to drop.
+                </p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-lg">description</span>
+</div>
+<div>
+<h3 class="text-white font-headline-sm text-lg font-medium">Forensic evidence transcript</h3>
+<p class="text-surface/70 text-sm mt-1 leading-relaxed">
+                  Structured call logs preserved automatically to submit directly to 1930 and state cyber cell investigators.
+                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: WhatsApp-Style Smartphone Alert Mockup -->
+<div class="lg:col-span-6 flex justify-center">
+<div class="w-full max-w-[380px] bg-[#121B22] rounded-3xl p-5 border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.5)] font-body-md">
+<!-- Mockup Header -->
+<div class="flex items-center justify-between pb-3 border-b border-white/10 text-xs text-white/60 mb-4">
+<span class="flex items-center gap-1 font-medium">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                WhatsApp Family Notification
+              </span>
+<span>Just now</span>
+</div>
+<!-- WhatsApp Message Bubble -->
+<div class="bg-[#1F2C34] rounded-2xl p-4 border border-white/10 text-white">
+<div class="flex items-center gap-2 mb-2 text-[#E5392B] font-semibold text-xs tracking-wide uppercase">
+<span class="material-symbols-outlined text-base">error</span>
+<span>Critical Kavach Guardian Alert</span>
+</div>
+<p class="text-sm text-white/95 leading-relaxed mb-3">
+                ⚠️ <strong class="text-white font-semibold">Harishchandra (Father)</strong> is currently on a suspected <strong class="text-[#ffb4a9]">Digital Arrest</strong> call from +91 98210 44102. Audio intercepted.
+              </p>
+<div class="bg-black/30 p-2.5 rounded-lg text-xs font-mono text-white/80 mb-4 border border-white/5">
+                “Suspect claiming to be CBI Officer demanding Aadhaar verification under Section 144.”
+              </div>
+<!-- Quick Action Buttons -->
+<div class="grid grid-cols-2 gap-2 pt-2 border-t border-white/10">
+<button class="py-2 px-3 rounded-lg bg-primary-container text-white font-medium text-xs text-center hover:bg-primary transition active:scale-[0.98]">
+                  Call Father Now
+                </button>
+<button class="py-2 px-3 rounded-lg bg-white/10 text-white font-medium text-xs text-center hover:bg-white/20 transition active:scale-[0.98]">
+                  View Transcript
+                </button>
+</div>
+</div>
+<!-- Footnote in chat -->
+<div class="text-center mt-3 text-[11px] text-white/40">
+              Encrypted channel • Incident reference #KV-9921
+            </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 8. TRUST & PRIVACY (Quiet, factual, honest) -->
+<!-- ========================================================================= -->
+<section class="py-28 md:py-36 border-b border-hairline bg-[#FAF8F4]">
+<div class="max-w-[1200px] mx-auto px-6 md:px-12">
+<!-- Section Header -->
+<div class="text-center max-w-2xl mx-auto mb-20">
+<span class="text-label-sm font-label-sm uppercase tracking-widest text-tertiary font-semibold block mb-3">Integrity Architecture</span>
+<h2 class="font-display-lg text-display-md md:text-display-lg text-on-surface leading-tight font-normal">
+          Dignified privacy, absolute clarity.
+        </h2>
+<p class="font-body-md text-tertiary mt-3">
+          Constructed with strict boundaries. We safeguard elderly autonomy without overreach.
+        </p>
+</div>
+<!-- 3 Columns with 1.5px Clean Stroke Icons -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+<!-- Column 1 -->
+<div class="bg-white rounded-2xl p-8 border border-hairline shadow-[0_1px_3px_rgba(14,17,22,0.02),0_4px_12px_rgba(14,17,22,0.03)]">
+<div class="w-12 h-12 rounded-xl bg-surface-container-low border border-hairline flex items-center justify-center text-on-surface mb-6">
+<span class="material-symbols-outlined text-2xl">timer</span>
+</div>
+<h3 class="font-headline-sm text-lg text-on-surface mb-2 font-semibold">
+            Audio is analysed only during the call
+          </h3>
+<p class="text-body-md text-tertiary leading-relaxed">
+            Ephemeral session processing streams convert speech to semantic signals. Zero raw audio recordings are archived permanently to our servers.
+          </p>
+</div>
+<!-- Column 2 -->
+<div class="bg-white rounded-2xl p-8 border border-hairline shadow-[0_1px_3px_rgba(14,17,22,0.02),0_4px_12px_rgba(14,17,22,0.03)]">
+<div class="w-12 h-12 rounded-xl bg-surface-container-low border border-hairline flex items-center justify-center text-on-surface mb-6">
+<span class="material-symbols-outlined text-2xl">manage_accounts</span>
+</div>
+<h3 class="font-headline-sm text-lg text-on-surface mb-2 font-semibold">
+            You control what is saved
+          </h3>
+<p class="text-body-md text-tertiary leading-relaxed">
+            Families decide whether flagged forensic transcripts are retained for police reference or instantly purged after the threat is dismissed.
+          </p>
+</div>
+<!-- Column 3 -->
+<div class="bg-white rounded-2xl p-8 border border-hairline shadow-[0_1px_3px_rgba(14,17,22,0.02),0_4px_12px_rgba(14,17,22,0.03)]">
+<div class="w-12 h-12 rounded-xl bg-surface-container-low border border-hairline flex items-center justify-center text-on-surface mb-6">
+<span class="material-symbols-outlined text-2xl">account_balance</span>
+</div>
+<h3 class="font-headline-sm text-lg text-on-surface mb-2 font-semibold">
+            Direct integration with 1930 &amp; cybercrime.gov.in
+          </h3>
+<p class="text-body-md text-tertiary leading-relaxed">
+            Standardized evidence dossiers formatted specifically to meet Indian Cyber Crime Coordination Centre (I4C) official filing requirements.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 9. FINAL CTA SECTION -->
+<!-- ========================================================================= -->
+<section class="py-28 md:py-36 border-b border-hairline bg-surface-container-low" id="live-demo">
+<div class="max-w-[1200px] mx-auto px-6 md:px-12 text-center">
+<div class="max-w-3xl mx-auto">
+<h2 class="font-display-lg text-display-md md:text-display-lg text-on-surface mb-5 leading-tight font-normal">
+          Protect them before the phone rings.
+        </h2>
+<p class="font-body-xl text-body-xl text-tertiary mb-10 max-w-xl mx-auto">
+          Set up Kavach on your parents’ phones in under 90 seconds. Simple remote pairing.
+        </p>
+<!-- CTA Buttons -->
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<a class="w-full sm:w-auto h-14 px-8 rounded-full bg-primary-container hover:bg-primary text-white font-label-md text-base flex items-center justify-center gap-2 transition-colors active:scale-[0.98] shadow-md shadow-primary-container/20" href="#demo">
+<span class="material-symbols-outlined text-xl">play_arrow</span>
+<span>Try the live demo</span>
+</a>
+<a class="w-full sm:w-auto h-14 px-8 rounded-full bg-inverse-surface hover:bg-black text-[#FAF8F4] font-label-md text-base flex items-center justify-center gap-2 transition-colors active:scale-[0.98]" href="#setup">
+<span>Set up for my parents</span>
+</a>
+</div>
+<p class="text-label-sm font-label-sm text-tertiary mt-8">
+          Compatible with all Android devices running Android 10+. iOS support launching Q2 2025.
+        </p>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 10. FOOTER (Shared Components Spec compliant) -->
+<!-- ========================================================================= -->
+<footer class="bg-surface-container-low dark:bg-surface-container-high docked full-width border-t border-surface-container dark:border-outline/20">
+<div class="w-full py-16 px-6 md:px-12 max-w-[1200px] mx-auto flex flex-col gap-12">
+<!-- 4 Clean Columns -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<!-- Column 1: Product -->
+<div>
+<div class="text-headline-sm font-headline-sm font-medium text-on-surface dark:text-inverse-on-surface mb-4">
+            Kavach
+          </div>
+<ul class="space-y-2 text-label-md font-label-md text-tertiary">
+<li><a class="hover:text-primary transition-colors" href="#how-it-works">How it works</a></li>
+<li><a class="hover:text-primary transition-colors" href="#scam-types">Scam types</a></li>
+<li><a class="hover:text-primary transition-colors" href="#for-families">For families</a></li>
+<li><a class="hover:text-primary transition-colors" href="#pricing">Pricing</a></li>
+</ul>
+</div>
+<!-- Column 2: Resources & National Helplines -->
+<div>
+<div class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface font-semibold mb-4">
+            Resources
+          </div>
+<ul class="space-y-2 text-label-md font-label-md text-tertiary">
+<li><a class="hover:text-primary transition-colors font-medium text-primary" href="tel:1930">National Cyber Helpline: 1930</a></li>
+<li><a class="hover:text-primary transition-colors" href="https://cybercrime.gov.in" rel="noopener noreferrer" target="_blank">cybercrime.gov.in</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Senior Safety Protocol</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Family Charter</a></li>
+</ul>
+</div>
+<!-- Column 3: Regional Languages -->
+<div>
+<div class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface font-semibold mb-4">
+            Languages
+          </div>
+<ul class="space-y-2 text-label-md font-label-md text-tertiary">
+<li><a class="text-on-surface font-medium hover:text-primary transition-colors" href="#">English (IN)</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">हिन्दी (Hindi)</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">ગુજરાતી (Gujarati)</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">मराठी (Marathi)</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">தமிழ் (Tamil)</a></li>
+</ul>
+</div>
+<!-- Column 4: Legal -->
+<div>
+<div class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface font-semibold mb-4">
+            Legal &amp; Governance
+          </div>
+<ul class="space-y-2 text-label-md font-label-md text-tertiary">
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Security Architecture</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact Officers</a></li>
+</ul>
+</div>
+</div>
+<!-- Copyright Text verbatim from source of truth -->
+<div class="pt-8 border-t border-hairline/80 flex flex-col md:flex-row items-center justify-between text-label-sm font-label-sm text-tertiary gap-4 text-center md:text-left">
+<p>© 2025 Kavach Digital Guardianship. In alignment with Indian Cyber Crime Coordination Centre (I4C). National Cyber Helpline: 1930 | cybercrime.gov.in</p>
+<div class="flex items-center gap-4 shrink-0">
+<span class="inline-flex items-center gap-1.5 text-secondary font-medium">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+            Surveillance-free architecture
+          </span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
