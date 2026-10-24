@@ -1,8 +1,6 @@
 'use client';
 
 // src/components/shield/RiskGauge.tsx
-// SVG arc gauge for risk score 0-100
-// Colors: emerald <35, amber 35-69, crimson 70+
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import type { Verdict } from '@/types/analysis';
@@ -14,42 +12,55 @@ const CIRCUMFERENCE = Math.PI * R; // half-circle arc
 
 function verdictColor(verdict: Verdict): string {
   switch (verdict) {
-    case 'scam':       return '#EF4444';
-    case 'suspicious': return '#F59E0B';
-    case 'safe':       return '#10B981';
+    case 'scam':
+      return '#EF4444';
+    case 'suspicious':
+      return '#F59E0B';
+    case 'safe':
+    default:
+      return '#10B981';
   }
 }
 
 function verdictGlow(verdict: Verdict): string {
   switch (verdict) {
-    case 'scam':       return 'drop-shadow(0 0 16px rgba(239,68,68,0.7))';
-    case 'suspicious': return 'drop-shadow(0 0 14px rgba(245,158,11,0.6))';
-    case 'safe':       return 'drop-shadow(0 0 12px rgba(16,185,129,0.5))';
+    case 'scam':
+      return 'drop-shadow(0 0 16px rgba(239,68,68,0.7))';
+    case 'suspicious':
+      return 'drop-shadow(0 0 14px rgba(245,158,11,0.6))';
+    case 'safe':
+    default:
+      return 'drop-shadow(0 0 12px rgba(16,185,129,0.5))';
   }
 }
 
 interface RiskGaugeProps {
-  score: number;
-  verdict: Verdict;
+  score?: number;
+  verdict?: Verdict;
   className?: string;
 }
 
-export function RiskGauge({ score, verdict, className }: RiskGaugeProps) {
-  const clamped = Math.min(100, Math.max(0, score));
+export function RiskGauge({ score = 0, verdict = 'safe', className }: RiskGaugeProps) {
+  const safeVerdict: Verdict = verdict === 'scam' || verdict === 'suspicious' ? verdict : 'safe';
+  const clamped = Math.min(100, Math.max(0, Math.round(score)));
   const dashOffset = CIRCUMFERENCE - (clamped / 100) * CIRCUMFERENCE;
-  const color = verdictColor(verdict);
+  const color = verdictColor(safeVerdict);
 
   const label: Record<Verdict, string> = {
-    safe:       'SAFE',
+    safe: 'SAFE',
     suspicious: 'SUSPICIOUS',
-    scam:       'SCAM DETECTED',
+    scam: 'SCAM DETECTED',
   };
 
   return (
     <div
       className={cn('flex flex-col items-center gap-2', className)}
-      role="img"
-      aria-label={`Risk score ${score} out of 100: ${label[verdict]}`}
+      role="meter"
+      aria-label={label[safeVerdict]}
+      aria-valuenow={clamped}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-valuetext={`${label[safeVerdict]} - ${clamped} percent`}
     >
       <svg
         width={SIZE}
@@ -59,62 +70,42 @@ export function RiskGauge({ score, verdict, className }: RiskGaugeProps) {
       >
         {/* Background track */}
         <path
-          d={`M ${STROKE_WIDTH / 2},${SIZE / 2} A ${R},${R} 0 0 1 ${SIZE - STROKE_WIDTH / 2},${SIZE / 2}`}
+          d={`M ${STROKE_WIDTH / 2} ${SIZE / 2} A ${R} ${R} 0 0 1 ${SIZE - STROKE_WIDTH / 2} ${SIZE / 2}`}
           fill="none"
-          stroke="#1E293B"
+          stroke="rgba(255,255,255,0.08)"
           strokeWidth={STROKE_WIDTH}
           strokeLinecap="round"
         />
-        {/* Animated filled arc */}
+
+        {/* Animated fill arc */}
         <motion.path
-          d={`M ${STROKE_WIDTH / 2},${SIZE / 2} A ${R},${R} 0 0 1 ${SIZE - STROKE_WIDTH / 2},${SIZE / 2}`}
+          d={`M ${STROKE_WIDTH / 2} ${SIZE / 2} A ${R} ${R} 0 0 1 ${SIZE - STROKE_WIDTH / 2} ${SIZE / 2}`}
           fill="none"
           stroke={color}
           strokeWidth={STROKE_WIDTH}
           strokeLinecap="round"
           strokeDasharray={CIRCUMFERENCE}
           initial={{ strokeDashoffset: CIRCUMFERENCE }}
-          animate={{
-            strokeDashoffset: dashOffset,
-            stroke: color,
-          }}
-          transition={{ duration: 1, ease: 'easeOut' }}
-          style={{ filter: verdictGlow(verdict) }}
+          animate={{ strokeDashoffset: dashOffset }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          style={{ filter: verdictGlow(safeVerdict) }}
         />
-        {/* Score text */}
-        <motion.text
-          x={SIZE / 2}
-          y={SIZE / 2 - 6}
-          textAnchor="middle"
-          fill={color}
-          fontSize="40"
-          fontWeight="800"
-          fontFamily="Plus Jakarta Sans, sans-serif"
-          animate={{ fill: color }}
-          transition={{ duration: 0.5 }}
-        >
-          {clamped}
-        </motion.text>
-        <text
-          x={SIZE / 2}
-          y={SIZE / 2 + 18}
-          textAnchor="middle"
-          fill="#94A3B8"
-          fontSize="10"
-          fontWeight="600"
-          fontFamily="Plus Jakarta Sans, sans-serif"
-          letterSpacing="0.08em"
-        >
-          / 100
-        </text>
       </svg>
-      <motion.span
-        className="text-sm font-bold tracking-widest uppercase"
-        animate={{ color }}
-        transition={{ duration: 0.5 }}
-      >
-        {label[verdict]}
-      </motion.span>
+
+      {/* Numerical score & Verdict label */}
+      <div className="flex flex-col items-center -mt-6">
+        <span className="text-3xl font-extrabold tracking-tight text-white font-mono">
+          {clamped}
+          <span className="text-sm font-normal text-stone-400">/100</span>
+        </span>
+        <span
+          className="text-xs font-bold tracking-widest uppercase mt-0.5"
+          style={{ color }}
+          data-testid="verdict-label"
+        >
+          {label[safeVerdict]}
+        </span>
+      </div>
     </div>
   );
 }
