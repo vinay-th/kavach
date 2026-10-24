@@ -69,8 +69,9 @@ export function FlagChip({ flag, className }: FlagChipProps) {
               color: colors.text,
             }}
           >
-            <Icon size={14} aria-hidden="true" />
-            <span>{label}</span>
+            <Icon size={14} aria-hidden="true" data-testid="flag-icon" />
+            <span data-testid="flag-label">{label}</span>
+            <span className="sr-only" data-testid="flag-evidence">Spoken evidence: {flag.evidence}</span>
           </div>
         </TooltipTrigger>
         <TooltipContent

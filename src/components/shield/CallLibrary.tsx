@@ -40,10 +40,18 @@ export function CallLibrary({
               type="button"
               disabled={disabled}
               onClick={() => onSelectScenario(scenario.id)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onSelectScenario(scenario.id);
+                }
+              }}
+              aria-pressed={isSelected}
+              data-testid={`scenario-${scenario.id}`}
               whileHover={disabled ? undefined : { scale: 1.01 }}
               whileTap={disabled ? undefined : { scale: 0.99 }}
               className={cn(
-                'relative flex flex-col text-left p-4 rounded-xl border transition-all duration-200',
+                'relative flex flex-col text-left p-4 rounded-xl border transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
                 isSelected
                   ? 'bg-white border-primary shadow-md ring-2 ring-primary/20'
                   : 'bg-white/70 hover:bg-white border-stone-200 hover:border-stone-300 shadow-sm',

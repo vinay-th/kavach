@@ -19,4 +19,17 @@ if (typeof window !== 'undefined') {
       dispatchEvent: () => false,
     }),
   });
+
+  if (typeof window.Animation !== 'undefined') {
+    const origCancel = window.Animation.prototype.cancel;
+    window.Animation.prototype.cancel = function () {
+      try {
+        this.finished?.catch(() => {});
+      } catch {
+        // ignore
+      }
+      return origCancel.call(this);
+    };
+  }
 }
+
