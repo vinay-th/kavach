@@ -11,11 +11,13 @@ vi.mock('server-only', () => ({}));
 const mockGenerateContent = vi.fn();
 vi.mock('@google/genai', () => {
   return {
-    GoogleGenAI: vi.fn().mockImplementation(() => ({
-      models: {
-        generateContent: mockGenerateContent,
-      },
-    })),
+    GoogleGenAI: vi.fn(function () {
+      return {
+        models: {
+          generateContent: mockGenerateContent,
+        },
+      };
+    }),
   };
 });
 
